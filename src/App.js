@@ -1,24 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import Login from './Authentication/Login'
+import Register from './Authentication/Register'
+import Error from './Authentication/Error';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Empty from './Authentication/Empty';
+export const LogedIn = React.createContext();
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/Register" element={<Register />} />
+        <Route path="/Empty" element={<Empty />} />
+        <Route path="/*" element={<Error />} />
+      </Routes>
+    </Router>
   );
 }
 
